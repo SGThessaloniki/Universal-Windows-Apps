@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="SpeedyMathsUniversal.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SpeedyMathsUniversal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="DarkSlateBlue">
+        <Button x:Name="ButtonStart" Content="Start" Background="OrangeRed" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                Height="135"  Width="365" FontSize="60" Click="Start_Click"/>
+
+        <Button x:Name="ButtonReset" Content="Reset" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                Height="133"  Width="365" FontSize="60" Click="Reset_Click"  />
+
+        <Grid x:Name="ButtonGrid">            
+            <Button x:Name="Button1" Content="" Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230" 
+                    Margin="500,0,0,250" RenderTransformOrigin="0.5,0.5"  FontSize="55" Click="Button1_Click"  >
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Button.RenderTransform>
+            </Button>
+            
+            <Button x:Name="Button2" Content="" Background="DarkGreen" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230" 
+                    Margin="1000,0,0,250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button2_Click" >
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Button.RenderTransform>
+            </Button>
+
+            <Button x:Name="Button3" Content="" Background="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230" 
+                    Margin="500,0,0,-250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button3_Click">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Button.RenderTransform>
+            </Button>
+
+            <Button x:Name="Button4" Content="" Background="DarkRed" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230"
+                    Margin="1000,0,0,-250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button4_Click">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Button.RenderTransform>
+            </Button>
+            
+            <Button x:Name="Button5" Content=""  Background="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230"
+                    Margin="-500,0,0,-250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button5_Click">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="90"/>
+                </Button.RenderTransform>
+            </Button>
+
+            <Button x:Name="Button6" Content="" Background="DarkGreen" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230" 
+                    Margin="-1000,0,0,-250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button6_Click">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="90"/>
+                </Button.RenderTransform>
+            </Button>
+
+            <Button x:Name="Button7" Content="" Background="LightGreen" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230" 
+                    Margin="-500,0,0,250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button7_Click">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="90"/>
+                </Button.RenderTransform>
+            </Button>
+
+            <Button x:Name="Button8" Content="" Background="#FFEC692B" HorizontalAlignment="Center" VerticalAlignment="Center" Height="230" Width="230" 
+                    Margin="-1000,0,0,250" RenderTransformOrigin="0.5,0.5" FontSize="55" Click="Button8_Click">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="90"/>
+                </Button.RenderTransform>
+            </Button>
+
+        </Grid>
+        
+        
+        <TextBlock x:Name="TextScore1" Text="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="450,20,0,0" FontSize="60" />
+
+        <TextBlock x:Name="TextScore2" Text="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-450,20,0,0" FontSize="60" />
+
+        <TextBlock x:Name="TextPlayer1" Text="Hit Start" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="250"  
+                   Margin="633,475.5,483,228.5" FontSize="60" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="-90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <TextBlock x:Name="TextPlayer2" Text="Hit Start" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="250" 
+                   Margin="483,228.5,633,475.5" FontSize="60" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+    </Grid>
+</Page>
