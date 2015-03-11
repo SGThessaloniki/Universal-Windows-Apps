@@ -13,8 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// This is a comment!
-
 namespace SpeedyMathsUniversal
 {    
     public sealed partial class MainPage : Page
