@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="SimpleSpeedyMaths.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleSpeedyMaths"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--Important Note: This application shares xaml between Windows phone and Windows. This tactics is not recommended. We did it only to show that
+    with the right methods it can be done. In contrast to what it looks like, it will not save time!-->
+    
+    <Grid Background="LightYellow">
+
+        <TextBlock x:Name="ProblemText" Text="Hit Start..." HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"  FontSize="50"/>
+
+        <Grid x:Name="ButtonsGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Width="370" Height="370">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="0" x:Name="Button1" FontSize="50" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Margin="0,0,5,5" BorderBrush="Black" Foreground="Black" Click="Button1_Click"/>
+
+            <Button Content="0" x:Name="Button2" FontSize="50" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Margin="5,0,0,5" BorderBrush="Black" Foreground="Black" Click="Button2_Click"/>
+
+            <Button Content="0" x:Name="Button3" FontSize="50" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Margin="0,5,5,0" BorderBrush="Black" Foreground="Black" Click="Button3_Click"/>
+            
+            <Button Content="0" x:Name="Button4" FontSize="50" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Margin="5,5,0,0" BorderBrush="Black" Foreground="Black" Click="Button4_Click"/>
+
+        </Grid>
+        
+
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                
+                <Button x:Name="StartButton" Content="Start" FontSize="30"  Background="Red" Click="StartButton_Click"/>
+
+                <Button x:Name="ResetButton" Content="Reset" FontSize="30"  HorizontalAlignment="Right" Background="Black" Click="ResetButton_Click"/>
+                
+            </StackPanel>
+
+            <TextBlock x:Name="ScoreText" Text="Score : 0" VerticalAlignment="Bottom" FontSize="70" Grid.Column="1" Grid.Row="2" Foreground="Black" />
+            
+        </StackPanel>
+        
+    </Grid>
+
+</Page>
