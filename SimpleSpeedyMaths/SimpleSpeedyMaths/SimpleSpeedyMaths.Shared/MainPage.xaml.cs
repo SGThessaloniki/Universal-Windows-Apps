@@ -78,10 +78,10 @@ namespace SimpleSpeedyMaths
             }
             correctAnswer = result;
 
-            FillButtonsWithPossibleAnswers(result, decidedOp);
+            FillButtonsWithPossibleAnswers(decidedOp);
         }
 
-        private void FillButtonsWithPossibleAnswers(int result, Operation selectedOp)
+        private void FillButtonsWithPossibleAnswers(Operation selectedOp)
         {
             Button[] buttonsArray = { Button1, Button2, Button3, Button4 };
 
