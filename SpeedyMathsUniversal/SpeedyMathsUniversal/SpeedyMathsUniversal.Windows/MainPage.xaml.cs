@@ -13,8 +13,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 namespace SpeedyMathsUniversal
-{    
+{
+    
     public sealed partial class MainPage : Page
     {
         private Random randomObject = new Random();
