@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="MemoryGame.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MemoryGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="CustomStyle" TargetType="Button">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="Black">
+
+        <Grid VerticalAlignment="Center" Height="350" Width="800" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="ProblemTxT" Text="SampleText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+            <Button x:Name="StartBtn" Content="Start" Width="400" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Click="StartBtn_Click"/>
+            <Grid Grid.Row="1" Height="220">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Btn1" Content="Answer#1" FontSize="30" Style="{StaticResource CustomStyle}" Click="Btn1_Click"/>
+                <Button x:Name="Btn2" Content="Answer#2" Grid.Column="2" FontSize="30" Style="{StaticResource CustomStyle}" Click="Btn2_Click"/>
+                <Button x:Name="Btn3" Content="Answer#3" Grid.Row="1" Margin="0,0,0,35" FontSize="30" Style="{StaticResource CustomStyle}" Click="Btn3_Click"/>
+                <Button x:Name="Btn4" Content="Answer#4" Grid.Column="2" Margin="0,0,0,35" Grid.Row="2" FontSize="30" Style="{StaticResource CustomStyle}" Click="Btn4_Click"/>
+                <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-100,0,0">
+                    <TextBlock x:Name="TimerTxT"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
+                    <TextBlock x:Name="ScoreTxT" Text="Score: " FontSize="30"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
