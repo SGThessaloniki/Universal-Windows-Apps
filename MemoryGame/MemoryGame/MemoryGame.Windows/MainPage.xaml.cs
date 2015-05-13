@@ -23,36 +23,41 @@ namespace MemoryGame
     public sealed partial class MainPage : Page
     {
         Random rd;
-        int rightAnswer;
-        int totalAnswers;
-        int[] answers;
-        int points;
+        
+        int RightAnswer;
+        int TotalQuestionsAnswered;
+        int[] PossibleAnswers;
+        int TotalPoints;
+
         DispatcherTimer timer;
-        int totalseconds;
-        int WaitSeconds = 3;
+        
+        int SecondsElapsed; //when 0 hide the number and "spawn" the 4 possible answers
+        int MaxWaitSeconds = 3;
 
         public MainPage()
         {
             this.InitializeComponent();
+            //Initialization
             ProblemTxT.Visibility = Visibility.Collapsed;
             Collapser();
         }
 
+        //Check if the tapped answer is correct
         private void CheckPressedButton(object sender)
         {
             Button PressedBtn = (Button)sender;
-            if (PressedBtn.Content.ToString() == rightAnswer.ToString())
+            if (PressedBtn.Content.ToString() == RightAnswer.ToString())
             {
-                points += 10;
-                ScoreTxT.Text = "Score: " + points.ToString();
+                TotalPoints += 10;
+                ScoreTxT.Text = "Score: " + TotalPoints.ToString();
             }
-            totalAnswers++;
+            TotalQuestionsAnswered++;
 
             Collapser();
 
             HandleRangeOfRandomAnswer();
         }
-
+        //Responsible for collapsing possible answers
         private void Collapser()
         {
             Btn1.Visibility = Visibility.Collapsed;
@@ -64,30 +69,30 @@ namespace MemoryGame
         private void StartQuiz()
         {
             rd = new Random();
-            answers = new int[4];
-            points = 0;
-            totalseconds = WaitSeconds;
+            PossibleAnswers = new int[4];
+            TotalPoints = 0;
+            SecondsElapsed = MaxWaitSeconds;
 
             HandleRangeOfRandomAnswer();
 
             ProblemTxT.Visibility = Visibility.Visible;
 
             TimerTxT.Visibility = Visibility.Visible;
-            TimerTxT.Text = totalseconds.ToString();
+            TimerTxT.Text = SecondsElapsed.ToString();
 
         }
-
+        //Handle the range of possible answers
         private void HandleRangeOfRandomAnswer()
         {
             Btn1.Content = 0;
             Btn2.Content = 0;
             Btn3.Content = 0;
             Btn4.Content = 0;
-            switch (totalAnswers)
+            switch (TotalQuestionsAnswered)
             {
                 case 0:
                     {
-                        GenerateUI(0, 100);
+                        GenerateUI(10, 100);
                         break;
                     }
                 case 1:
@@ -127,42 +132,48 @@ namespace MemoryGame
         private void FinishQuiz()
         {
             ProblemTxT.Text = "Finished!";
+            ProblemTxT.Visibility = Visibility.Visible;
+
             TimerTxT.Visibility = Visibility.Collapsed;
 
             timer.Stop();
             Collapser();
+
+            StartBtn.Content = "Start Over?";
+            StartBtn.Visibility = Visibility.Visible;
         }
 
         private void GenerateUI(int MinNum, int MaxNum)
         {
-            rightAnswer = rd.Next(MinNum, MaxNum);
+            RightAnswer = rd.Next(MinNum, MaxNum);
             int correctResultButton = rd.Next(0, 4);
-            answers[correctResultButton] = rightAnswer;
+            PossibleAnswers[correctResultButton] = RightAnswer;
 
-            //Content to the rest 3 buttons
+            //Generate 3 random answers
             for (int i = 0; i < 4; i++)
             {
                 if (i != correctResultButton)
                 {
                     int randomAnswer = rd.Next(MinNum, MaxNum);
-                    while (randomAnswer == rightAnswer)
+                    while (randomAnswer == RightAnswer)
                     {
                         randomAnswer = rd.Next(MinNum, MaxNum);
                     }
-                    answers[i] = randomAnswer;
+                    PossibleAnswers[i] = randomAnswer;
                 }
             }
 
-            ProblemTxT.Text = rightAnswer.ToString();
-            Btn1.Content = answers[0].ToString();
-            Btn2.Content = answers[1].ToString();
-            Btn3.Content = answers[2].ToString();
-            Btn4.Content = answers[3].ToString();
+            ProblemTxT.Text = RightAnswer.ToString();
+            //Populate buttons with content
+            Btn1.Content = PossibleAnswers[0].ToString();
+            Btn2.Content = PossibleAnswers[1].ToString();
+            Btn3.Content = PossibleAnswers[2].ToString();
+            Btn4.Content = PossibleAnswers[3].ToString();
 
-            totalseconds = WaitSeconds;
+            SecondsElapsed = MaxWaitSeconds;
 
             ProblemTxT.Visibility = Visibility.Visible;
-            TimerTxT.Text = totalseconds.ToString();
+            TimerTxT.Text = SecondsElapsed.ToString();
             TimerTxT.Visibility = Visibility.Visible;
 
         }
@@ -175,12 +186,14 @@ namespace MemoryGame
             timer.Start();
 
             StartBtn.Visibility = Visibility.Collapsed;
+
+            TotalQuestionsAnswered = 0;
             StartQuiz();
         }
-
+        //Ticks every second
         void timer_Tick(object sender, object e)
         {
-            if (totalseconds == 0)
+            if (SecondsElapsed == 0)
             {
                 ProblemTxT.Visibility = Visibility.Collapsed;
 
@@ -191,11 +204,11 @@ namespace MemoryGame
                 Btn3.Visibility = Visibility.Visible;
                 Btn4.Visibility = Visibility.Visible;
             }
-            else if (totalseconds < 0) return;
+            else if (SecondsElapsed < 0) return;
             else
             {
-                totalseconds--;
-                TimerTxT.Text = totalseconds.ToString();
+                SecondsElapsed--;
+                TimerTxT.Text = SecondsElapsed.ToString();
             }
         }
 

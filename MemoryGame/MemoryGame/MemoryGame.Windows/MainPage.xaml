@@ -13,18 +13,21 @@
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="200"/>
         </Style>
     </Page.Resources>
 
-    <Grid Background="Black">
+    <Grid Background="#FF2A2AD1">
 
         <Grid VerticalAlignment="Center" Height="350" Width="800" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="ProblemTxT" Text="SampleText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
-            <Button x:Name="StartBtn" Content="Start" Width="400" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Click="StartBtn_Click"/>
+            <StackPanel>
+                <Button x:Name="StartBtn" Content="Start" Width="350" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Click="StartBtn_Click"/>
+                <TextBlock x:Name="ProblemTxT" Text="SampleText" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+            </StackPanel>
             <Grid Grid.Row="1" Height="220">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -41,7 +44,7 @@
                 <Button x:Name="Btn4" Content="Answer#4" Grid.Column="2" Margin="0,0,0,35" Grid.Row="2" FontSize="30" Style="{StaticResource CustomStyle}" Click="Btn4_Click"/>
                 <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-100,0,0">
                     <TextBlock x:Name="TimerTxT"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
-                    <TextBlock x:Name="ScoreTxT" Text="Score: " FontSize="30"/>
+                    <TextBlock x:Name="ScoreTxT" Text="Score: 0" FontSize="30"/>
                 </StackPanel>
             </Grid>
         </Grid>
