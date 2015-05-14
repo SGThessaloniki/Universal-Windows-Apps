@@ -25,6 +25,12 @@ namespace SimpleSpeedyMaths
         int totalscore;
         int correctAnswer;
         Random rnd = new Random();
+        //Will manage the status of the winning streak
+        //0=rookie
+        //3=apprentice
+        //6=wizard
+        //9=gandalf the white
+        int WinningStreak;
 
         enum Operation
         {
@@ -36,6 +42,7 @@ namespace SimpleSpeedyMaths
         {
             this.InitializeComponent();
 
+            WinningStreak = 0;
             foreach (Button i in ButtonsGrid.Children)
                 i.Content = " ";
         }
@@ -148,16 +155,57 @@ namespace SimpleSpeedyMaths
             Button pressedButton = (Button)sender;
 
             int buttonsContent = Int32.Parse(pressedButton.Content.ToString());
-
+            //Answer is correct
             if (buttonsContent == correctAnswer)
+            {
                 totalscore++;
-
+                WinningStreak++;
+            }
             else
+            {
                 totalscore--;
-
+                //Reset winning streak
+                WinningStreak = 0;
+            }
             ScoreText.Text = "Score : " + totalscore.ToString();
+            DetermineStatusOfPlayer();
             ZeroButtonsContent();
             Start();
+        }
+
+        private void DetermineStatusOfPlayer()
+        {
+            //0=rookie
+            //3=apprentice
+            //6=wizard
+            //9=gandalf the white
+            switch(WinningStreak)
+            {
+                case 0:
+                    {
+                        StatusTxT.Text = "Current Status: Rookie";
+                        break;
+                    }
+                case 3:
+                    {
+                        StatusTxT.Text = "Current Status: Apprentice";
+                        break;
+                    }
+                case 6:
+                    {
+                        StatusTxT.Text = "Current Status: Wizard";
+                        break;
+                    }
+                case 9:
+                    {
+                        StatusTxT.Text = "Current Status: Gandalf the white";
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
 
         private void ZeroButtonsContent()
